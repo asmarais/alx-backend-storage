@@ -52,7 +52,7 @@ def replay(func: Callable):
         inputs_list.append(input.decode('utf-8'))
     for output in client.lrange('{}:outputs'.format(func_name), 0, -1):
         outputs_list.append(output.decode('utf-8'))
-    print('{} was called {} times'.format(func_name, calls))
+    print('{} was called {} times:'.format(func_name, calls))
     for input, output in zip(inputs_list, outputs_list):
         print('{}(*{}) -> {}'.format(func_name, input, output))
 
